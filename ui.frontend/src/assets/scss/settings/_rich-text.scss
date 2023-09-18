@@ -1,0 +1,141 @@
+.rich-text {
+    // white-space: pre-line;
+    ul, ol {
+        margin: 1em 0;
+
+         // spacing above header after list
+         + :is(h1,h2,h3,h4,h5,h6) {
+            margin-top: rem(32);
+        }
+    }
+
+    ol {
+        list-style: decimal;
+        margin: rem(16) 0 rem(16) rem(16);
+    }
+
+    ul {
+        li {
+            position: relative;
+            list-style: disc;
+            margin-left: rem(40);
+            padding-left: rem(10);
+            @include fontStyle(body-1);
+
+            & + li {
+                margin-top: 0.5em;
+            }
+
+            &::marker {
+                color: var(--c-skyblue);
+                font-size: rem(30);
+            }
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        padding-bottom: rem(16);
+    }
+
+    h1,
+    h2 {
+        @include fontStyle(display-6);
+    }
+    h3,
+    h4 {
+        @include fontStyle(display-7);
+    }
+    h5,
+    h6 {
+        @include fontStyle(display-8);
+    }
+    p {
+        @include fontStyle(body-1);
+
+        // spacing above header after paragraph
+        + :is(h1,h2,h3,h4,h5,h6) {
+            margin-top: rem(32);
+        }
+
+        a {
+            text-decoration: underline;
+            color: var(--c-grey2);
+            &:focus,
+            &:focus-visible {
+                color: var(--c-seablue);
+
+            }
+
+        }
+        b,
+        strong {
+            font-weight: 700;
+        }
+        i,
+        em {
+            font-style: italic;
+        }
+
+        & + p {
+            margin-top: 1em;
+        }
+    }
+    h1, h2, h3, h4, h5, h6 {
+        * + & {
+            margin-top: 0.5em;
+        }
+    }
+    blockquote {
+        position: relative;
+        @include fontStyle(display-4);
+        padding-left: rem(24);
+        margin: rem(64) 0;
+        hyphens: auto;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            background-color: var(--c-seablue);
+            width: rem(2);
+        }
+    }
+    table {
+        margin-top: rem(32);
+
+        td {
+            line-height: 1.4;
+            @include fontStyle(body-2);
+
+            &:has(b) {
+                padding-bottom: rem(10);
+
+                b {
+                    @include fontStyle(title-3);
+                    font-weight: 700;
+                }
+            }
+            p {
+                @include fontStyle(body-2);
+            }
+        }
+    }
+    table td {
+        border-left: 2em solid transparent;
+        border-top: 1em solid transparent;
+    }
+    table td:first-child {
+        border-left: 0;
+    }
+    table tr:first-child td {
+        border-top: 0;
+    }
+}

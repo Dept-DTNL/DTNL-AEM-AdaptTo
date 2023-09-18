@@ -1,0 +1,11 @@
+@use "sass:math";
+
+
+@function clamped($min, $max, $breakpoint) {
+    @return clamp(
+      #{rem($min)},
+      #{100vw * math.div($min, nounit(map-get($mq-breakpoints, $breakpoint)))},
+      #{rem($max)}
+    );
+  }
+  

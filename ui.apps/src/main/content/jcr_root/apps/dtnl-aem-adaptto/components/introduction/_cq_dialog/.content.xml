@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Properties"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <introduction
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Introduction configuration"
+                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                <items jcr:primaryType="nt:unstructured">
+                    <sizeDescription
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/text"
+                        text="Please select the size of the component"/>
+                    <sizeSelect
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Size Select"
+                        name="./size">
+                        <items
+                            jcr:primaryType="nt:unstructured">
+                            <OptionXS
+                                jcr:primaryType="nt:unstructured"
+                                text="XS"
+                                value="XS"/>
+                            <OptionS
+                                jcr:primaryType="nt:unstructured"
+                                text="S"
+                                value="S"/>
+                            <OptionM
+                                jcr:primaryType="nt:unstructured"
+                                text="M"
+                                value="M"/>
+                            <OptionL
+                                jcr:primaryType="nt:unstructured"
+                                text="L"
+                                value="L"/>
+                            <OptionXL
+                                jcr:primaryType="nt:unstructured"
+                                text="XL"
+                                value="XL"/>
+                        </items>
+                    </sizeSelect>
+                    <headline
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Please provide the headline (Only visible in sizes: M, L, XL)"
+                        name="./headline"/>
+                    <description
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                        fieldLabel="Please provide the description"
+                        name="./description"
+                        required="true"
+                        rows="10"
+                        resize="vertical"/>
+                    <backgroundStyle
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Please choose a style for the component"
+                        name="./backgroundStyle">
+                        <items
+                            jcr:primaryType="nt:unstructured">
+                            <OptionWhiteBackground
+                                jcr:primaryType="nt:unstructured"
+                                text="White Background"
+                                value="White Background"/>
+                            <OptionPurpleBackground
+                                jcr:primaryType="nt:unstructured"
+                                text="Purple Background"
+                                value="Purple Background"/>
+                        </items>
+                    </backgroundStyle>
+                    <fieldset
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                        jcr:title="CTA Configuration">
+                        <items jcr:primaryType="nt:unstructured">
+                            <ctaLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="CTA Label (Only visible in sizes: M, L, XL)"
+                                name="./ctaLabel"/>
+                            <ctaUrl
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="CTA link"
+                                name="./ctaUrl"
+                                rootPath="/content"/>
+                        </items>
+                    </fieldset>
+                    <showImageInRigthSide
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            name="./showImageRightSide"
+                            text="Show image in right side"
+                            value="{Boolean}true"/>
+                    <imageDescription
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/text"
+                        text="Please provide the image (Only visible in sizes: XL)"/>
+                    <image
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                        autoStart="{Boolean}false"
+                        class="cq-droptarget"
+                        fileNameParameter="./imageName"
+                        fileReferenceParameter="./imageReference"
+                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                        multiple="{Boolean}false"
+                        name="./image"
+                        title="Upload Image Asset"
+                        uploadUrl="${suffix.path}"
+                        useHTML5="{Boolean}true"/>
+                    <id
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Please provide an ID for the component (this ID is used when you want to move the scroll of the page to this component)"
+                        name="./id"/>
+                    <mobileImageFirst
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            name="./mobileImageFirst"
+                            text="When the XL style is used, render the image above the content"
+                            value="{Boolean}true"/>
+                </items>
+            </introduction>
+        </items>
+    </content>
+</jcr:root>
+

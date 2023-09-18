@@ -1,0 +1,30 @@
+@mixin energyEfficiencyLabel($type: 1) {
+    position: relative;
+
+    box-sizing: border-box;
+    height: rem(24);
+    min-width: #{$type * rem(10) + rem(40)};
+    padding: rem(4) 0 rem(4) rem(6);
+    display: inline-flex;
+    
+    color: var(--c-white);
+    font-weight: 700;
+    font-size: rem(14);
+    line-height: rem(16);
+
+    background-color: var(--c-energy#{$type});
+
+    &:after {
+        display: inline-flex;
+        content: '';
+        border: rem(12) solid transparent;
+        border-left-color: var(--c-energy#{$type});
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 0;
+        left: 100%;
+        transform-origin: left center;
+        transform: scaleX(0.8);
+    }
+}

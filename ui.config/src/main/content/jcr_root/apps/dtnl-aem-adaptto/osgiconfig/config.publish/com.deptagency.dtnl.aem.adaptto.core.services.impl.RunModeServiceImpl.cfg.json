@@ -1,0 +1,4 @@
+{
+    "runMode": "publish",
+    "environment": "$[env:ENVIRONMENT;default=DEV]"
+}

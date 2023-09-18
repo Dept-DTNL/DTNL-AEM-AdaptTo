@@ -1,0 +1,12 @@
+<div>
+  <h3>Component Hero banner component</h3>
+
+  <sly data-sly-use.model="com.deptagency.dtnl.aem.adaptto.core.models.HeroBannerModel"/>
+
+  <ul>
+    <li>Text: ${model.text}</li>
+    <li>Checkbox: ${model.checkbox ? "Checked!" : "Not Checked!"} </li>
+    <li>Url: ${model.url}</li>
+    <li>Image: <img src="${model.fileReference}" alt=""></li>
+  </ul>
+</div>

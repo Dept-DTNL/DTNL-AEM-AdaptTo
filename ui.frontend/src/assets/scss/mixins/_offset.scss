@@ -1,0 +1,33 @@
+@mixin offset($direction: left, $breakpoint: false) {
+    @if $breakpoint {
+      $size: map-get($container-horizontal-spacing-values-fluid, $breakpoint);
+      @include mq($from: $breakpoint) {
+        width: calc(100% + #{$size});
+        @if $direction == right {
+          margin-right: calc(#{$size} * -1);
+        } @else {
+          margin-left: calc(#{$size} * -1);
+        }
+      }
+    } @else {
+      $size1: rem($container-horizontal-spacing-small);
+      width: calc(100% + #{$size1});
+  
+      @if $direction == right {
+        margin-right: calc(#{$size1} * -1);
+      } @else {
+        margin-left: calc(#{$size1} * -1);
+      }
+      @each $breakpoint, $size in $container-horizontal-spacing-values-fluid {
+        @include mq($from: $breakpoint) {
+          width: calc(100% + #{$size});
+          @if $direction == right {
+            margin-right: calc(#{$size} * -1);
+          } @else {
+            margin-left: calc(#{$size} * -1);
+          }
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,227 @@
+@import '@assets/scss/global';
+@import '@assets/scss/base';
+
+.introduction {
+    $module: '.introduction';
+    @include container;
+    @include verticalSpacing;
+    @include grid;
+
+    h2 {
+        @include fontStyle(display-3);
+    }
+    p {
+        @include fontStyle(title-3);
+    }
+    
+    .button {
+        @include buttonOutlinedInverted;
+    }
+
+    &__inner {
+        grid-column: 1 / 5;
+        @include mq($from: vp4) {
+            grid-column: 1 / 9;
+        }
+        @include mq($from: vp5) {
+            grid-column: 2 / 12;
+        }
+
+        &.image-first {
+            @include mq($until: vp5) {
+                display: flex;
+                flex-direction: column;
+
+                #{$module}__content {
+                    order: 2;
+                    margin-top: rem(25);
+                }
+                #{$module}__image {
+                    order: 1;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    &__content {
+        grid-row: 1;
+    }
+
+    &__image {
+        grid-row: 1;
+        aspect-ratio: 1/1;
+        
+        img {
+            display: block;
+            border-radius: rem(20);
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &--small-body {
+        #{$module}__description {
+            p {
+                @include fontStyle(body-2);
+            }
+        } 
+    }
+    
+    &--default {
+        #{$module}__inner {
+            display: block;
+        }
+        #{$module}__description {
+            @include mq($from: vp5) {
+                @include grid;
+            }
+        } 
+        p {
+            @include mq($from: vp5) {
+                grid-column: 1 / 9;
+            }
+        }
+        .button {
+            margin-top: rem(24);
+            @include mq($from: vp5) {
+                margin-top: 0;
+            }
+        }
+
+        #{$module}__cta {
+            @include mq($from: vp5) {
+                grid-column: 10 / 13;
+            }
+        }
+    }
+    &--extended {
+
+        #{$module}__content {
+            @include grid;
+            
+            grid-template-rows: auto auto;
+            @include mq($from: vp5) {
+                grid-template-rows: 1fr;
+            }   
+        }   
+        
+        #{$module}__headline {
+            grid-column: span 4;
+            grid-row: 1;
+            
+            @include mq($from: vp4) {
+                grid-column: span 8;
+            }
+
+            @include mq($from: vp5) {
+                grid-column: span 5;
+            }
+        }
+        #{$module}__description {
+            margin-top: rem(24);
+            grid-column: 2 / 5;
+            grid-row: 2;
+            
+            @include mq($from: vp4) {
+                grid-column: 2 / span 6;
+            }
+            @include mq($from: vp5) {
+                grid-row: 1;
+                margin-top: 0;
+                grid-column: 7 / 13;
+            }
+        }
+        .button {
+            margin-top: rem(24);
+        }
+    }
+
+    &--full {
+        #{$module}__inner {
+            
+            @include mq($from: vp5) {
+                @include grid;
+                grid-template-rows: 1fr;
+            }
+        }
+        #{$module}__image {
+            margin-top: rem(40);
+            @include mq($from: vp5) {
+                margin-top: 0;
+                grid-column: span 6;
+            }
+        }
+        #{$module}__content {
+            @include mq($from: vp5) {
+                grid-column: 8 / 13;
+            }
+            
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            
+            p {
+                margin-top: rem(24);
+                @include fontStyle(title-3);
+            }
+            .button {
+                margin-top: rem(24);
+            }
+        }        
+    }
+
+    &--reversed {
+        #{$module}__content {
+            @include mq($from: vp5) {
+                grid-column: span 6;
+            }
+        }
+        #{$module}__image {
+
+            @include mq($from: vp5) {
+       
+                grid-column: 8 / 13;
+            }
+        }
+    }
+
+
+
+    &--inverted {
+        color: var(--c-white);
+        background-color: var(--c-lavender);
+        @include verticalSpacing(false,true);
+        border-radius: rem(20);
+        margin-left: rem($container-horizontal-spacing-small);
+        margin-right: rem($container-horizontal-spacing-small);
+        
+        padding-top: rem(40);
+        padding-bottom: rem(40);
+        @include mq($from: vp4) {
+            margin-left: rem($container-horizontal-spacing-regular);
+            margin-right: rem($container-horizontal-spacing-regular);
+        }
+        @include mq($from: vp5) {
+            padding-top: rem(80);
+            padding-bottom: rem(80);
+        }
+        @include mq($from: vp7) {
+            padding-top: rem(100);
+            padding-bottom: rem(100);
+            margin-left: rem($container-horizontal-spacing-large);
+            margin-right: rem($container-horizontal-spacing-large);
+        }
+        @include mq($from: vp9) {
+            margin: 0 auto;
+        }
+        
+        .button {
+            @include button;
+        }
+    }
+}

@@ -1,0 +1,421 @@
+@mixin button-reset {
+    background: none;
+    padding: 0;
+    margin: 0;
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+  }
+  
+  @function push-column($cols: 1, $breakpoint: mobile) {
+    $return: 0;
+  
+    @if $breakpoint == mobile {
+      $return: ((100 / $grid-columns-mobile) * $cols) + "%";
+    } @else if $breakpoint == mobilelarge {
+      $return: ((100 / $grid-columns-mobile-large) * $cols) + "%";
+    } @else if $breakpoint == tablet {
+      $return: ((100 / $grid-columns-tablet) * $cols) + "%";
+    } @else if $breakpoint == desktop {
+      $return: ((100 / $grid-columns-desktop) * $cols) + "%";
+    }
+  
+    @return $return;
+  }
+  @function push-gutter($cols: 1, $breakpoint: mobile) {
+    $return: 0;
+  
+    @if $breakpoint == mobile {
+      $return: rem($grid-gutter-mobile * $cols);
+    } @else if $breakpoint == mobilelarge {
+      $return: rem($grid-gutter-mobile-large * $cols);
+    } @else if $breakpoint == tablet {
+      $return: rem($grid-gutter-tablet * $cols);
+    } @else if $breakpoint == desktop {
+      $return: rem($grid-gutter-desktop * $cols);
+    }
+  
+    @return $return;
+  }
+  
+  @function push-calc($cols: 1, $breakpoint: mobile) {
+    $width: push-column($cols, $breakpoint);
+    $gutter: push-gutter($cols, $breakpoint);
+    @return calc(#{$width} + #{$gutter});
+  }
+  
+  // CSS "IF's" mixins below, based on article by Lea Verou (http://lea.verou.me/2011/01/styling-children-based-on-their-number-with-css3/)
+  // Usage example - if exactly 3 items do stuff:
+  //
+  // @include qq-equal(3) {
+  //   @include mq($from: screen-sm) {
+  //     flex: 0 0 percentage(1/3);
+  //     max-width: percentage(1/3);
+  //   }
+  // }
+  @mixin quantity-query($number, $comparison: "equal") {
+    $nth: "";
+  
+    @if index(("greater" "more" ">"), $comparison) {
+      $nth: "n + #{$number}";
+    } @else if index(("less" "fewer" "<"), $comparison) {
+      $nth: "-n + #{$number}";
+    } @else if index(("equal" "same" "="), $comparison) {
+      $nth: $number;
+    } @else {
+      @warn "Sorry, that's an invalid $comparison value.";
+    }
+  
+    &:nth-last-child(#{$nth}):first-child {
+      &,
+      ~ * {
+        @content;
+      }
+    }
+  }
+  
+  // @qq-equal( $number )
+  //
+  // Proxy for quantity-query mixin. If container contains amount of items equal to $number, css values are set.
+  //
+  // $number		- Item count
+  @mixin qq-equal($number) {
+    @include quantity-query($number, equal) {
+      @content;
+    }
+  }
+  
+  // @qq-greater( $number )
+  //
+  // Proxy for quantity-query mixin. If container contains amount of items greater than $number, css values are set.
+  //
+  // $number		- Item count
+  @mixin qq-greater($number) {
+    @include quantity-query($number, greater) {
+      @content;
+    }
+  }
+  
+  // @qq-less( $number )
+  //
+  // Proxy for quantity-query mixin. If container contains amount of items less than $number, css values are set.
+  //
+  // $number		- Item count
+  @mixin qq-less($number) {
+    @include quantity-query($number, less) {
+      @content;
+    }
+  }
+  
+  // ------------
+  // KEPT AROUND FOR LATER REFERENCE
+  //
+  // @css-grid-columns($fractions: [amount of columns], $gapsize: [number])
+  //
+  // Mixin for laying out an area as a grid
+  //
+  // $fractions		  - Number of columns in the grid
+  // $breakpoint		- A string i.e. 'md' specifying breakpoint where the grid is active
+  // $gap				    - A boolean specifying if the grid uses grid-gap
+  
+  // @mixin css-grid-columns-old($fractions: 1, $breakpoint: false, $gapsize: 0) {
+  //   // @include gutter-margin-sides();
+  //   // @extend .container;
+  
+  //   @if $breakpoint {
+  //     // @include mq($until: screen-#{$breakpoint}) {
+  //     //   > * + * {
+  //     //   	margin-top: rem($gutter-margin-small);
+  //     //   }
+  //     // }
+  //     @include mq($from: screen-#{$breakpoint}) {
+  //       display: grid;
+  //       grid-template-columns: repeat($fractions, 1fr);
+  //       @if $gapsize > 0 {
+  //         grid-gap: rem($gapsize);
+  //       }
+  //       // > * + * {
+  //       // 	margin-top: 0 !important;
+  //       // }
+  //     }
+  
+  //     // IE TEST
+  //     @include mq($from: screen-#{$breakpoint}, $and: '(-ms-high-contrast: none), (-ms-high-contrast: active)') {
+  //       display: flex;
+  //       flex-wrap: wrap;
+  
+  //       > * {
+  //         @if $gapsize {
+  //           flex: 0 0 #{percentage(1/$fractions) - 2%};
+  //           width: #{percentage(1/$fractions) - 2%};
+  //           padding: 1% !important;
+  //         }
+  //         @else {
+  //           flex: 0 0 #{percentage(1/$fractions)};
+  //           width: #{percentage(1/$fractions)};
+  //         }
+  //       }
+  //     }
+  //   }
+  //   @else {
+  //     // display: grid;
+  //     grid-template-columns: repeat($fractions, 1fr);
+  //     @if $gapsize > 0 {
+  //       grid-gap: rem($gapsize);
+  //     }
+  
+  //     @include mq($from: 0, $and: '(-ms-high-contrast: none), (-ms-high-contrast: active)') {
+  //       display: flex;
+  //       flex-wrap: wrap;
+  
+  //       > * {
+  //         @if $gapsize > 0 {
+  //           flex: 0 0 #{percentage(1/$fractions) - 2%};
+  //           width: #{percentage(1/$fractions) - 2%};
+  //           padding: 1% !important;
+  //         }
+  //         @else {
+  //           flex: 0 0 #{percentage(1/$fractions)};
+  //           width: #{percentage(1/$fractions)};
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // @mixin css-grid-no-gutters {
+  //   margin-left: 0 !important;
+  //   margin-right: 0 !important;
+  //   grid-gap: 0 !important;
+  
+  //   @include mq($from: 0, $and: '(-ms-high-contrast: none), (-ms-high-contrast: active)') {
+  //     > * { padding: 0; }
+  //   }
+  // }
+  
+  // CSS grid column
+  @mixin css-grid-columns($fractions: 1, $gapsize: 0) {
+    grid-template-columns: repeat($fractions, 1fr);
+    @if $gapsize > 0 {
+      grid-gap: rem($gapsize);
+    }
+  }
+  // Responsive grid
+  @mixin css-grid-span($mq: false, $spansize: 0) {
+    @if $mq {
+      @include mq($from: screen-#{$mq}) {
+        .grid-col#{$spansize}-#{$mq} {
+          grid-column: span $spansize;
+        }
+      }
+    } @else {
+      .grid-col#{$spansize} {
+        grid-column: span $spansize;
+      }
+    }
+  }
+  
+  // COMMENT: A mixin to style native, moz and webkit autofill/autocomplete user-agent styling on form-elements
+  // - moz and webkit cannot share the same definition :/
+  @mixin autofill-styling($inputtype: self) {
+    @if $inputtype == self {
+      &:-moz-autofill,
+      &:-moz-autofill:hover,
+      &:-moz-autofill:focus {
+        @content;
+      }
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus {
+        @content;
+      }
+    } @else if $inputtype == childInput {
+      input:-moz-autofill,
+      input:-moz-autofill:hover,
+      input:-moz-autofill:focus {
+        @content;
+      }
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus {
+        @content;
+      }
+    } @else if $inputtype == childTextarea {
+      textarea:-moz-autofill,
+      textarea:-moz-autofill:hover,
+      textarea:-moz-autofill:focus {
+        @content;
+      }
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover,
+      textarea:-webkit-autofill:focus {
+        @content;
+      }
+    } @else if $inputtype == childSelect {
+      select:-moz-autofill,
+      select:-moz-autofill:hover,
+      select:-moz-autofill:focus {
+        @content;
+      }
+      select:-webkit-autofill,
+      select:-webkit-autofill:hover,
+      select:-webkit-autofill:focus {
+        @content;
+      }
+    }
+  }
+  
+  @mixin form-group-grid() {
+    grid-template-columns: 1fr 1fr;
+  
+    &#{"-5050"} {
+      grid-template-columns: 1fr 1fr;
+    }
+    &#{"-6040"} {
+      grid-template-columns: 6fr 4fr;
+    }
+    &#{"-4060"} {
+      grid-template-columns: 4fr 6fr;
+    }
+    &#{"-7030"} {
+      grid-template-columns: 7fr 3fr;
+    }
+    &#{"-3070"} {
+      grid-template-columns: 3fr 7fr;
+    }
+    &#{"-3366"} {
+      grid-template-columns: 1fr 2fr;
+    }
+    &#{"-6633"} {
+      grid-template-columns: 2fr 1fr;
+    }
+    &#{"-2575"} {
+      grid-template-columns: 1fr 3fr;
+    }
+    &#{"-7525"} {
+      grid-template-columns: 3fr 1fr;
+    }
+    &#{"-auto"} {
+      grid-template-columns: auto auto;
+    }
+  }
+  // PSEUDO-BORDER mixin
+  // * A pseudo element that span's the the width of the screen by
+  //   counters $site-padding-*'s
+  // * positions the pseudo-element as a border top or bottom
+  // usage:
+  // &:before {
+  //   @include pseudo-border(top);
+  // }
+  @mixin pseudo-border($position: top) {
+    content: "";
+    position: absolute;
+    left: rem(-$site-padding-mobile);
+    right: rem(-$site-padding-mobile);
+    height: rem(1);
+    background-color: var(--border);
+  
+    @if $position == top {
+      top: 0;
+    } @else if $position == bottom {
+      bottom: 0;
+    }
+  
+    @include mq($from: screen-sm) {
+      left: rem(-$site-padding-tablet);
+      right: rem(-$site-padding-tablet);
+    }
+    @include mq($from: screen-lg) {
+      left: 0;
+      right: 0;
+    }
+  }
+  
+  // Gutters
+  
+  @mixin vertical-padding {
+    padding-top: rem($gutter-padding-2);
+    padding-bottom: rem($gutter-padding-2);
+    @include mq($from: screen-sm) {
+      padding-top: rem($gutter-padding-4);
+      padding-bottom: rem($gutter-padding-4);
+    }
+  }
+  @mixin vertical-margin {
+    margin-top: rem($gutter-margin-2);
+    margin-bottom: rem($gutter-margin-2);
+    @include mq($from: screen-sm) {
+      margin-top: rem($gutter-margin-4);
+      margin-bottom: rem($gutter-margin-4);
+    }
+  }
+  
+  // hidden mediaquery helpers
+  @mixin responsive-helpers {
+    @for $i from 1 to length($mq-breakpoint-names) + 1 {
+      $breakpoint-name: unquote(nth($mq-breakpoint-names, $i));
+      @include mq($from: screen-#{$breakpoint-name}) {
+        .hidden-from-#{$breakpoint-name} {
+          display: none !important;
+        }
+      }
+      @include mq($until: screen-#{$breakpoint-name}) {
+        .hidden-until-#{$breakpoint-name} {
+          display: none !important;
+        }
+      }
+    }
+  }
+  
+  @mixin screen-readers-only() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  
+  @mixin content-push() {
+    @include mq($from: screen-lg) {
+      padding-left: 16.7%;
+    }
+  }
+  
+  // triangle mixin
+  // @param width {num}
+  // @param height {num}
+  // @param color {hex}
+  // @param color {string}
+  
+  @mixin triangle($width, $height, $color, $direction) {
+    $half-width: $width;
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    z-index: 10;
+  
+    @if ($direction == up) {
+      border-left: rem($half-width) solid transparent;
+      border-right: rem($half-width) solid transparent;
+      border-bottom: rem($height) solid $color;
+    }
+    @if ($direction == down) {
+      border-left: rem($half-width) solid transparent;
+      border-right: rem($half-width) solid transparent;
+      border-top: rem($height) solid $color;
+    }
+    @if ($direction == left) {
+      border-top: rem($half-width) solid transparent;
+      border-bottom: rem($half-width) solid transparent;
+      border-right: rem($height) solid $color;
+    }
+    @if ($direction == right) {
+      border-top: rem($half-width) solid transparent;
+      border-bottom: rem($half-width) solid transparent;
+      border-left: rem($height) solid $color;
+    }
+  }
+  

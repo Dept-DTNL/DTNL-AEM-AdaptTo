@@ -1,0 +1,134 @@
+@import '@assets/scss/base';
+
+.entrances {
+    $module: '.entrances';
+    position: relative;
+
+    @include container;
+    @include verticalSpacing;
+
+    &__inner {
+        border-radius: rem(20);
+        @include mq($from: vp5) {
+            background-color: var(--c-lightgrey);
+        }
+    }
+    &__content {
+        padding: rem(40) 0;
+
+        @include mq($from: vp5) {
+            @include grid;
+            padding: rem(75) 0 rem(40);
+        }
+    }
+
+    &__headline {
+        @include fontStyle(display-3);
+        grid-column: 2 / 6;
+    }
+    &__description {
+        margin-top: rem(20);
+        @include fontStyle(title-3);
+        grid-column: 7 / 12;
+        @include mq($from: vp5) {
+            margin-top: 0;
+        }
+    }
+
+
+    &__tiles {
+        margin-top: rem(15);
+        padding: 0 0 rem(40);
+
+        @include mq($from: vp5) {
+            margin-top: rem(80);
+            padding: 0 0 rem(80);
+            @include grid;
+        }
+
+        &__list {
+
+            @include mq($from: vp5) {
+                grid-column: 2 / 12;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: rem($grid-gap-regular);
+            }
+        }
+    }
+
+    &__tile {
+
+        transform: translateY(rem(-20));
+        opacity: 0;
+        transition-property: all;
+        transition-duration: 0.1s;
+        transition-timing-function: ease-out;
+
+        .in-view & {
+            @for $i from 1 to 20 {
+                &:nth-child(#{$i}) {
+                    transition-delay: #{0.1 * $i + 0.2}s !important;
+                }
+            }
+            transition-duration: 0.5s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        & + #{$module}__tile {
+            margin-top: rem(16);
+            @include mq($from: vp5) {
+                margin-top: 0;
+            }
+        }
+        .content-tile {
+            height: 100%;
+
+            @include mq($until: vp3) {
+              grid-template-areas:
+                  "image"
+                  "content";
+              grid-template-rows: auto auto;
+              grid-template-columns: 1fr;
+              &__image {
+                border-radius: rem(20) rem(20) 0 0;
+              }
+              &__content {
+                border-radius: 0 0 rem(20) rem(20);
+              }
+            }
+        }
+    }
+
+    .content-tile__image {
+        @include mq($from: vp5) {
+            aspect-ratio: 4 / 3;
+        }
+    }
+
+    &--single,
+    &--double {
+        .content-tile__image {
+            @include mq($from: vp5) {
+                aspect-ratio: 16 / 9;
+            }
+        }
+    }
+
+    &--single {
+        .entrances__tiles__list {
+            @include mq($from: vp5) {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    &--double {
+        .entrances__tiles__list {
+            @include mq($from: vp5) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}

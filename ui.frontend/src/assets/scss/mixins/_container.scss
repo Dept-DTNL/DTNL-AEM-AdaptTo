@@ -1,0 +1,27 @@
+$container-horizontal-spacing-small: 16;
+$container-horizontal-spacing-regular: 24;
+$container-horizontal-spacing-large: 30;
+
+$container-horizontal-spacing-values-fluid: (
+  vp4: rem($container-horizontal-spacing-regular),
+  vp7: rem($container-horizontal-spacing-large)
+);
+
+@mixin container($padding: true) {
+  @if $padding {
+    padding-left: rem($container-horizontal-spacing-small);
+    padding-right: rem($container-horizontal-spacing-small);
+
+    @each $breakpoint, $size in $container-horizontal-spacing-values-fluid {
+      @include mq($from: $breakpoint) {
+        padding-left: $size;
+        padding-right: $size;
+      }
+    }
+  }
+
+  @include mq($from: vp9) {
+    max-width: rem(nounit(map-get($mq-breakpoints, vp9)));
+    margin: 0 auto;
+  }
+}

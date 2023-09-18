@@ -1,0 +1,43 @@
+
+@media print {
+
+    @page {
+        //size: auto;   /* auto is the initial value */
+        margin: 0; /* this affects the margin in the printer settings */
+    }
+    h1, h2, h3, h4, h5, h6, p {
+        color: black;
+        page-break-inside: avoid;
+    }
+    blockquote {
+        page-break-inside: avoid;
+    }
+
+    html,
+    body {
+        height: auto;
+        margin: 0;
+        padding: 40px 20px;
+        color: black;
+    }
+
+    .main-header, nav, .main-footer, footer {
+        display: none;
+    }
+    .share-download-print {
+        display: none !important;
+    }
+
+    img {
+        max-width: rem(500);
+    }
+
+    .hero-banner__content {
+        min-height: auto;
+    }
+
+    .news-topic-header {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+ }

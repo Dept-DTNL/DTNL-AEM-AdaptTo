@@ -1,0 +1,16 @@
+$grid-columns-mobile: 4;
+$grid-columns-tablet: 8;
+$grid-columns-desktop: 12;
+
+$grid-gap-small: 16;
+$grid-gap-regular: 24;
+
+$grid-gap-sizes: (
+  vp1: $grid-gap-small,
+  vp5: $grid-gap-regular,
+);
+
+$grid-column-counts: (
+  vp4: $grid-columns-tablet,
+  vp5: $grid-columns-desktop,
+);

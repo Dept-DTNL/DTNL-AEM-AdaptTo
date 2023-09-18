@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/dtnl-aem-adaptto/clientlibs"/>
+    <filter root="/apps/dtnl-aem-adaptto/components"/>
+    <filter root="/apps/dtnl-aem-adaptto/i18n"/>
+</workspaceFilter>

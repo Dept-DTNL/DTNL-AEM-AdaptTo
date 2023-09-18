@@ -1,0 +1,17 @@
+{
+"excerpt.properties": [
+  "alt",
+  "buttonText",
+  "description",
+  "imageName",
+  "jcr:title",
+  "jcr:description",
+  "label",
+  "name",
+  "text",
+  "title"
+],
+"cache.max.entries": 0,
+"cache.entry.lifetime": 300,
+"xpath.union": true
+}

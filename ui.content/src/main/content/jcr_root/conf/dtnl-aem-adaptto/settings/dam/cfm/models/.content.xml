@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <b2c-selection-solution/>
+    <b2c-selection-tool/>
+    <jcr:content jcr:primaryType="nt:unstructured"/>
+    <product-variants-cf-model/>
+    <labels-cf-model/>
+    <product-cf-model/>
+    <installers-cf-model/>
+    <pdp-header-extra-information-cf-model/>
+    <hit-area-video-model/>
+    <video-model/>
+    <default-page-scripts/>
+    <flyout-cf-model/>
+    <product-variations-images/>
+    <product-usp/>
+</jcr:root>

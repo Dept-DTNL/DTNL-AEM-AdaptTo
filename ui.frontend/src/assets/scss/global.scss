@@ -1,0 +1,90 @@
+@import './base';
+
+// settings
+@import './settings/colors';
+@import './settings/fonts';
+@import './settings/reset';
+@import './settings/swiper';
+@import './settings/print';
+
+// mixins
+@import './mixins/container-global';
+@import './mixins/font-style-global';
+@import './mixins/debug-global';
+@import './mixins/energy-label-global';
+
+@import './settings/mui-forms';
+@import './settings/rich-text';
+
+:root {
+  --vh: 80px;
+  --main-nav-height: #{rem(65)};
+  --mode-switch-height: #{rem(40)};
+
+  // Colors
+  @each $color, $value in $colors {
+    --c-#{$color}: #{$value};
+  }
+  --100vh: calc(100vh - var(--main-nav-height) - var(--mode-switch-height));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @include fontStyle(paragraph-1);
+}
+p strong {
+  font-weight: 700;
+}
+img {
+  width: 100%;
+}
+
+a {
+  transition: 500ms ease;
+  &:hover,
+  &:focus-visible {
+    color: var(--c-seablue);
+    text-decoration: underline;
+  }
+}
+
+.section {
+  $easing: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.5s $easing, transform 1s $easing, filter 1.3s $easing 0.5s;
+  &.in-view {
+    transform: translateY(0);
+    filter: saturate(1);
+    opacity: 1;
+  }
+  &:not(.in-view) {
+    transform: translateY(rem(-10));
+    filter: saturate(0);
+    opacity: 0;
+  }
+}
+
+.image-empty {
+  width: 100%;
+  height: 100%;
+  background-color: var(--c-grey3);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

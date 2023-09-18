@@ -1,0 +1,23 @@
+$mq-breakpoint-names: (
+  "vp1", 
+  "vp2", 
+  "vp3", 
+  "vp4", 
+  "vp5", 
+  "vp6", 
+  "vp7", 
+  "vp8", 
+  "vp9"
+);
+
+$mq-breakpoints: (
+  vp1: 150px, //micro mobile
+  vp2: 375px, //small mobile
+  vp3: 560px, //regular mobile
+  vp4: 768px, //tablet portrait
+  vp5: 1024px, //tablet landscape
+  vp6: 1160px, //desktop
+  vp7: 1440px, //desktop large
+  vp8: 1680px, //desktop xlarge
+  vp9: 1920px, //desktop xxlarge
+);

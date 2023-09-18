@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        "create path (sling:OrderedFolder) /content/dam/dtnl-aem-adaptto",
+        "create path (nt:unstructured) /content/dam/dtnl-aem-adaptto/jcr:content",
+        "set properties on /content/dam/dtnl-aem-adaptto/jcr:content\n  set cq:conf{String} to /conf/dtnl-aem-adaptto\n  set jcr:title{String} to \"DTNL AEM Adaptto\"\nend"
+    ]
+}

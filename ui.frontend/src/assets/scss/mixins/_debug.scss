@@ -1,0 +1,24 @@
+@mixin debugBar {
+    @include verticalSpacing(false,true);
+
+    border-top: rem(3) solid black;
+    border-bottom: rem(3) solid black;
+    display: flex;
+    align-items: center;
+    padding: rem(20);
+    background-color: orange;
+    color: black;
+    
+    &:before {
+        content: '⚠';
+        display: inline-flex;
+        font-size: rem(50);
+        margin-right: rem(20);
+    }
+    h6 {
+        @include fontStyle(display-6);
+    }
+    p {
+        @include fontStyle(body-1);
+    }
+}

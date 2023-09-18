@@ -1,0 +1,14 @@
+<div>
+  <h3>Component Introduction component</h3>
+
+  <sly data-sly-use.model="com.deptagency.dtnl.aem.adaptto.core.models.IntroductionModel"/>
+
+  <ul>
+    <li>Title: ${model.title}</li>
+    <li>Description: ${model.description}</li>
+    <li>ButtonLabel: ${model.button.label}</li>
+    <li>ButtonUrl: ${model.button.url}</li>
+    <li>Size: ${model.size}</li>
+    <li>ImageReference: <img src="${model.image}" alt=""></li>
+  </ul>
+</div>

@@ -1,0 +1,56 @@
+@mixin fontStyle($style: "default") {
+    $typeSettings: map-get($typography-vars, $style);
+  
+    @if $typeSettings != null {
+      @if map-get($typeSettings, ff) {
+        font-family: map-get($typeSettings, ff);
+      }
+  
+      @if map-get($typeSettings, szf) {
+        font-size: map-get($typeSettings, szf);
+      } @else if map-get($typeSettings, sz) {
+        font-size: rem(map-get($typeSettings, sz));
+      }
+  
+      @if map-get($typeSettings, fw) {
+        font-weight: map-get($typeSettings, fw);
+      }
+      @if map-get($typeSettings, fs) {
+        font-style: map-get($typeSettings, fs);
+      }
+      @if map-get($typeSettings, tt) {
+        text-transform: map-get($typeSettings, tt);
+      }
+      @if map-get($typeSettings, ls) {
+        letter-spacing: rem(map-get($typeSettings, ls));
+      }
+      @if map-get($typeSettings, lh) {
+        line-height: calc(map-get($typeSettings, lh) / map-get($typeSettings, sz));
+      }
+      @if map-get($typeSettings, td) {
+        text-decoration: map-get($typeSettings, td);
+      }
+      @if map-get($typeSettings, breakpoints) {
+        $breakpoints: map-get($typeSettings, breakpoints);
+  
+        @each $breakpoint, $typeSettings in $breakpoints {
+          @include mq($from: $breakpoint) {
+            @if map-get($typeSettings, szf) {
+              font-size: map-get($typeSettings, szf);
+            } @else if map-get($typeSettings, sz) {
+              font-size: rem(map-get($typeSettings, sz));
+            }
+  
+            @if (map-get($typeSettings, ls)) {
+              letter-spacing: rem(map-get($typeSettings, ls));
+            }
+            @if (map-get($typeSettings, lh)) {
+              line-height: calc(map-get($typeSettings, lh) / map-get($typeSettings, sz));
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  

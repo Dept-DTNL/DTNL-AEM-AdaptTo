@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Properties"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <slides
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                    jcr:title="Slides">
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <slide
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                    composite="{Boolean}true"
+                                    fieldLabel="Slide"
+                                    required="{Boolean}true">
+                                <field
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        name="./slides">
+                                    <items jcr:primaryType="nt:unstructured">
+
+                                                <heading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                        level="2"
+                                                        text="Slide" />
+                                                <tabTitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Title"
+                                                        required="true"
+                                                        name="./slideTitle"/>
+                                                <date
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                                        fieldLabel="Date"
+                                                        required="{Boolean}false"
+                                                        name="./date"/>
+                                                <headline
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Headline"
+                                                        required="true"
+                                                        name="./headline"/>
+                                                <description
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                        fieldLabel="Description"
+                                                        name="./description"
+                                                        required="true"
+                                                        rows="5"
+                                                        resize="vertical"/>
+                                                <cta
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                        path="/apps/dtnl-aem-adaptto/components/common/cq:dialog/content/items/column/items/fieldsetCta"
+                                                        namespace="cta"/>
+                                                <backgroundColor
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Background Color"
+                                                        name="./bgColor">
+                                                    <items
+                                                            jcr:primaryType="nt:unstructured">
+                                                        <black
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Black"
+                                                                value="black"/>
+                                                        <light
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Light"
+                                                                value="light"/>
+                                                        <darkGrey
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Dark Grey"
+                                                                value="darkgrey"/>
+                                                        <lavender
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Lavender"
+                                                                value="lavender"/>
+                                                    </items>
+                                                </backgroundColor>
+                                                <tags
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                        composite="{Boolean}true"
+                                                        fieldLabel="Tags"
+                                                        required="{Boolean}false">
+                                                    <field
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                            emptyText="Please add some tags"
+                                                            name="./tags">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <heading
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                                    level="3"
+                                                                    text="Tag" />
+                                                            <label
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Tag Label"
+                                                                    required="true"
+                                                                    name="./label"/>
+                                                            <style
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                    fieldLabel="Style"
+                                                                    fieldDescription="Please note that Tag style will be Transparent when the backgound color Lavender has been selected"
+                                                                    name="./style">
+                                                                <items
+                                                                        jcr:primaryType="nt:unstructured">
+                                                                    <lavender
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="Lavender"
+                                                                            value="Lavender"/>
+                                                                    <teal
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="Teal"
+                                                                            value="Fake Teal"/>
+                                                                </items>
+                                                            </style>
+                                                        </items>
+                                                    </field>
+                                                </tags>
+                                        <image
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                                path="/apps/dtnl-aem-adaptto/components/common/cq:dialog/content/items/column/items/fieldsetImage"/>
+                                    </items>
+                                </field>
+                            </slide>
+                            <id
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide an ID for the component (this ID is used when you want to move the scroll of the page to this component)"
+                                    name="./id"/>
+                        </items>
+                    </column>
+                </items>
+            </slides>
+        </items>
+    </content>
+</jcr:root>
+

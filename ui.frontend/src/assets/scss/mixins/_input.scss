@@ -1,0 +1,30 @@
+@mixin input {
+    display: inline-flex;
+    appearance: none;
+    font-size: rem(16);
+    background-color: var(--c-lightgrey);
+    border-radius: rem(30);
+    border: rem(1) solid var(--c-grey2);
+    color: var(--c-darkgrey);
+    padding: rem(15) rem(16);
+    box-sizing: border-box;
+    height: rem(40);
+    line-height: 1.3571;
+
+    transition: all 0.3s ease-out;
+ 
+    &:hover {
+        border-color: var(--c-darkgrey);
+    }
+    
+    &:focus,
+    &:focus-visible {
+        box-shadow: 0 0 0 rem(2) var(--c-seablue);
+    }
+
+    @include mq($from: vp5) {
+        height: rem(46);
+        font-size: rem(14);
+    }
+
+}

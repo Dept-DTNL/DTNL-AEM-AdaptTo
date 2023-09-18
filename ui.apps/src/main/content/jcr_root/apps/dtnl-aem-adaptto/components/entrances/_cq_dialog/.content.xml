@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Entrances Component"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <solutionEntrance
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Solution Entrance"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <primaryHeadLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    required="true"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./primaryHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./primaryDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <styleDescription
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/text"
+                                    text="Please choose a style for the tiles"/>
+                            <styleSelect
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                    name="./configSelect">
+                                <items
+                                        jcr:primaryType="nt:unstructured">
+                                    <OptionCta
+                                            jcr:primaryType="nt:unstructured"
+                                            text="CTA"
+                                            value="CTA"/>
+                                    <OptionUsps
+                                            jcr:primaryType="nt:unstructured"
+                                            text="USPS"
+                                            value="USPS"/>
+                                </items>
+                            </styleSelect>
+                            <id
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide an ID for the component (this ID is used when you want to move the scroll of the page to this component)"
+                                    name="./id"/>
+                        </items>
+                    </solutionEntrance>
+                    <tileOne
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile 1"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <headLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    required="true"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./tileOneHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./tileOneDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <fieldsetCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="CTA Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Please provide a link for cta"
+                                            name="./tileOneCtaUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </fieldsetCta>
+                            <fieldsetImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Image Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/text"
+                                            text="Please provide the image for the tile"/>
+                                    <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            fileNameParameter="./tileOneImageName"
+                                            fileReferenceParameter="./tileOneImageReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./tileOneImage"
+                                            title="Upload Image Asset"
+                                            uploadUrl="${suffix.path}"
+                                            required="{Boolean}true"
+                                            useHTML5="{Boolean}true"/>
+                                </items>
+                            </fieldsetImage>
+                            <fieldsetUsps
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="USPS Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <usps
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldDescription="Usps Details"
+                                            fieldLabel="Please provide the list of USPs"
+                                            required="{Boolean}false">
+                                        <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                emptyText="USPS"
+                                                name="./uspsOne">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <usp
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="USP"
+                                                                fieldLabel="Please provide the label"
+                                                                name="./usp"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </usps>
+                                </items>
+                            </fieldsetUsps>
+                        </items>
+                    </tileOne>
+                    <tileTwo
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile 2"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <headLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    required="true"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./tileTwoHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./tileTwoDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <fieldsetCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="CTA Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Please provide a link for cta"
+                                            name="./tileTwoCtaUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </fieldsetCta>
+                            <fieldsetImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Image Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/text"
+                                            text="Please provide the image"/>
+                                    <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            fileNameParameter="./tileTwoImageName"
+                                            fileReferenceParameter="./tileTwoImageReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./tileTwoImage"
+                                            title="Upload Image Asset"
+                                            uploadUrl="${suffix.path}"
+                                            required="{Boolean}true"
+                                            useHTML5="{Boolean}true"/>
+                                </items>
+                            </fieldsetImage>
+                            <fieldsetUsps
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="USPS Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <usps
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldDescription="Usps Details"
+                                            fieldLabel="Please provide the list of USPs"
+                                            required="{Boolean}false">
+                                        <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                emptyText="USPS"
+                                                name="./uspsTwo">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <usp
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="USP"
+                                                                fieldLabel="Please provide the label"
+                                                                name="./usp"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </usps>
+                                </items>
+                            </fieldsetUsps>
+                        </items>
+                    </tileTwo>
+                    <tileThree
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile 3"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <headLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    fieldDescription="Please configure headline, description and image fields to display this tab"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./tileThreeHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./tileThreeDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <fieldsetCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="CTA Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Please provide a link for cta"
+                                            name="./tileThreeCtaUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </fieldsetCta>
+                            <fieldsetImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Image Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/text"
+                                            text="Please provide the image"/>
+                                    <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            fileNameParameter="./tileThreeImageName"
+                                            fileReferenceParameter="./tileThreeImageReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./tileThreeImage"
+                                            title="Upload Image Asset"
+                                            uploadUrl="${suffix.path}"
+                                            useHTML5="{Boolean}true"/>
+                                </items>
+                            </fieldsetImage>
+                            <fieldsetUsps
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="USPS Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <usps
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldDescription="Usps Details"
+                                            fieldLabel="Please provide the list of USPs"
+                                            required="{Boolean}false">
+                                        <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                emptyText="USPS"
+                                                name="./uspsThree">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <usp
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="USP"
+                                                                fieldLabel="Please provide the label"
+                                                                name="./usp"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </usps>
+                                </items>
+                            </fieldsetUsps>
+                        </items>
+                    </tileThree>
+                    <tileFour
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile 4"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <headLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    fieldDescription="Please configure headline, description and image fields to display this tab"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./tileFourHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./tileFourDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <fieldsetCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="CTA Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Please provide a link for cta"
+                                            name="./tileFourCtaUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </fieldsetCta>
+                            <fieldsetImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Image Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/text"
+                                            text="Please provide the image"/>
+                                    <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            fileNameParameter="./tileFourImageName"
+                                            fileReferenceParameter="./tileFourImageReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./tileFourImage"
+                                            title="Upload Image Asset"
+                                            uploadUrl="${suffix.path}"
+                                            useHTML5="{Boolean}true"/>
+                                </items>
+                            </fieldsetImage>
+                            <fieldsetUsps
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="USPS Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <usps
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldDescription="Usps Details"
+                                            fieldLabel="Please provide the list of USPs"
+                                            required="{Boolean}false">
+                                        <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                emptyText="USPS"
+                                                name="./uspsFour">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <usp
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="USP"
+                                                                fieldLabel="Please provide the label"
+                                                                name="./usp"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </usps>
+                                </items>
+                            </fieldsetUsps>
+                        </items>
+                    </tileFour>
+                    <tileFive
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile 5"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <headLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    fieldDescription="Please configure headline, description and image fields to display this tab"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./tileFiveHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./tileFiveDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <fieldsetCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="CTA Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Please provide a link for cta"
+                                            name="./tileFiveCtaUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </fieldsetCta>
+                            <fieldsetImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Image Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/text"
+                                            text="Please provide the image"/>
+                                    <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            fileNameParameter="./tileFiveImageName"
+                                            fileReferenceParameter="./tileFiveImageReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./tileFiveImage"
+                                            title="Upload Image Asset"
+                                            uploadUrl="${suffix.path}"
+                                            useHTML5="{Boolean}true"/>
+                                </items>
+                            </fieldsetImage>
+                            <fieldsetUsps
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="USPS Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <usps
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldDescription="Usps Details"
+                                            fieldLabel="Please provide the list of USPs"
+                                            required="{Boolean}false">
+                                        <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                emptyText="USPS"
+                                                name="./uspsFive">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <usp
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="USP"
+                                                                fieldLabel="Please provide the label"
+                                                                name="./usp"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </usps>
+                                </items>
+                            </fieldsetUsps>
+                        </items>
+                    </tileFive>
+                    <tileSix
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile 6"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <headLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    fieldDescription="Please configure headline, description and image fields to display this tab"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./tileSixHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./tileSixDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <fieldsetCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="CTA Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Please provide a link for cta"
+                                            name="./tileSixCtaUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </fieldsetCta>
+                            <fieldsetImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Image Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/text"
+                                            text="Please provide the image"/>
+                                    <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            fileNameParameter="./tileSixImageName"
+                                            fileReferenceParameter="./tileSixImageReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./tileSixImage"
+                                            title="Upload Image Asset"
+                                            uploadUrl="${suffix.path}"
+                                            useHTML5="{Boolean}true"/>
+                                </items>
+                            </fieldsetImage>
+                            <fieldsetUsps
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="USPS Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <usps
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldDescription="Usps Details"
+                                            fieldLabel="Please provide the list of USPs"
+                                            required="{Boolean}false">
+                                        <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                emptyText="USPS"
+                                                name="./uspsSix">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <usp
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="USP"
+                                                                fieldLabel="Please provide the label"
+                                                                name="./usp"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </usps>
+                                </items>
+                            </fieldsetUsps>
+                        </items>
+                    </tileSix>
+                    <tileSeven
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile 7"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <headLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    fieldDescription="Please configure headline, description and image fields to display this tab"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./tileSevenHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./tileSevenDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <fieldsetCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="CTA Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Please provide a link for cta"
+                                            name="./tileSevenCtaUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </fieldsetCta>
+                            <fieldsetImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Image Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/text"
+                                            text="Please provide the image"/>
+                                    <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            fileNameParameter="./tileSevenImageName"
+                                            fileReferenceParameter="./tileSevenImageReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./tileSevenImage"
+                                            title="Upload Image Asset"
+                                            uploadUrl="${suffix.path}"
+                                            useHTML5="{Boolean}true"/>
+                                </items>
+                            </fieldsetImage>
+                            <fieldsetUsps
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="USPS Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <usps
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldDescription="Usps Details"
+                                            fieldLabel="Please provide the list of USPs"
+                                            required="{Boolean}false">
+                                        <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                emptyText="USPS"
+                                                name="./uspsSeven">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <usp
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="USP"
+                                                                fieldLabel="Please provide the label"
+                                                                name="./usp"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </usps>
+                                </items>
+                            </fieldsetUsps>
+                        </items>
+                    </tileSeven>
+                    <tileEight
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile 8"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <headLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    fieldDescription="Please configure headline, description and image fields to display this tab"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./tileEightHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./tileEightDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <fieldsetCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="CTA Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Please provide a link for cta"
+                                            name="./tileEightCtaUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </fieldsetCta>
+                            <fieldsetImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Image Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/text"
+                                            text="Please provide the image"/>
+                                    <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            fileNameParameter="./tileEightImageName"
+                                            fileReferenceParameter="./tileEightImageReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./tileEightImage"
+                                            title="Upload Image Asset"
+                                            uploadUrl="${suffix.path}"
+                                            useHTML5="{Boolean}true"/>
+                                </items>
+                            </fieldsetImage>
+                            <fieldsetUsps
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="USPS Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <usps
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldDescription="Usps Details"
+                                            fieldLabel="Please provide the list of USPs"
+                                            required="{Boolean}false">
+                                        <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                emptyText="USPS"
+                                                name="./uspsEight">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <usp
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="USP"
+                                                                fieldLabel="Please provide the label"
+                                                                name="./usp"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </usps>
+                                </items>
+                            </fieldsetUsps>
+                        </items>
+                    </tileEight>
+                    <tileNine
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile 9"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <headLine
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Please provide the headline"
+                                    fieldDescription="Please configure headline, description and image fields to display this tab"
+                                    maxLength="72"
+                                    emptyText="Max 72 characters"
+                                    name="./tileNineHeadLine"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Please provide a description"
+                                    name="./tileNineDescription"
+                                    rows="10"
+                                    resize="vertical"/>
+                            <fieldsetCta
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="CTA Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Please provide a link for cta"
+                                            name="./tileNineCtaUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </fieldsetCta>
+                            <fieldsetImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Image Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/text"
+                                            text="Please provide the image"/>
+                                    <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            fileNameParameter="./tileNineImageName"
+                                            fileReferenceParameter="./tileNineImageReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./tileNineImage"
+                                            title="Upload Image Asset"
+                                            uploadUrl="${suffix.path}"
+                                            useHTML5="{Boolean}true"/>
+                                </items>
+                            </fieldsetImage>
+                            <fieldsetUsps
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="USPS Configuration">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <usps
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldDescription="Usps Details"
+                                            fieldLabel="Please provide the list of USPs"
+                                            required="{Boolean}false">
+                                        <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                emptyText="USPS"
+                                                name="./uspsNine">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <usp
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldDescription="USP"
+                                                                fieldLabel="Please provide the label"
+                                                                name="./usp"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </usps>
+                                </items>
+                            </fieldsetUsps>
+                        </items>
+                    </tileNine>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
+

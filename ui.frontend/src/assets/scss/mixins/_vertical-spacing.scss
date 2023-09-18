@@ -1,0 +1,49 @@
+
+$container-vertical-spacing-xsmall: 30;
+$container-vertical-spacing-small: 45;
+$container-vertical-spacing-regular: 85;
+$container-vertical-spacing-large: 115;
+
+$container-vertical-spacing-values-fluid: (
+  vp3: clamped($container-vertical-spacing-small, $container-vertical-spacing-regular, vp3),
+  vp4: clamped($container-vertical-spacing-regular, $container-vertical-spacing-large, vp4),
+  vp5: rem($container-vertical-spacing-large),
+);
+
+
+
+@mixin verticalSpacing($top: false, $useMargin: false) {
+    $mobile-size: clamped($container-vertical-spacing-xsmall, $container-vertical-spacing-small, vp2);
+    @if $top {
+      @if ($useMargin) {
+        margin-top: $mobile-size;
+      } @else {
+        padding-top: $mobile-size;
+      }
+    } @else {
+      @if ($useMargin) {
+        margin-bottom: $mobile-size;
+      } @else {
+        padding-bottom: $mobile-size;
+      }
+    }
+  
+    @each $breakpoint, $size in $container-vertical-spacing-values-fluid {
+      @include mq($from: $breakpoint) {
+        @if $top {
+          @if ($useMargin) {
+            margin-top: $size;
+          } @else {
+            padding-top: $size;
+          }
+        } @else {
+          @if ($useMargin) {
+            margin-bottom: $size;
+          } @else {
+            padding-bottom: $size;
+          }
+        }
+      }
+    }
+  }
+  

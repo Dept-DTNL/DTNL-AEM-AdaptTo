@@ -1,0 +1,26 @@
+#
+# This file contains the filter ACL, and can be customized.
+#
+# By default, it includes the default filter ACL.
+#
+
+$include "./default_filters.any"
+
+# Allow components JSON model
+/0101 { /type "allow" /extension "json" /selectors "model" /path "/content/*" }
+
+# Allow manifest.webmanifest files located in the content
+/0102 { /type "allow" /extension "webmanifest" /path "/content/*/manifest" }
+
+/0103 { /type "allow" /url "/loaderio-f471bbf6bf17d4eb5da9138343854a5d.txt"}
+
+/0104 { /type "allow" /url "/robots.txt"}
+
+# Allow GET call to servlets
+/005 { /type "allow" /url "/bin/*"    }  # allow bin path access
+
+# Allow AEM sitemaps
+/0200 { /type "allow" /path "/content/*" /selectors '(sitemap-index|sitemap)' /extension "xml" }
+
+# This rule allows content to be access
+/0210 { /type "allow" /extension '(css|eot|gif|ico|jpeg|jpg|js|gif|pdf|png|svg|swf|ttf|woff|woff2|html|mp4|mov|m4v|glb)' /path "/content/*" }  # disable this rule to allow mapped content only

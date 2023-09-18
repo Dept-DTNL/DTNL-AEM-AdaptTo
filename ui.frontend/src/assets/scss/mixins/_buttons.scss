@@ -1,0 +1,285 @@
+@mixin link($small: false, $inverted: false) {
+  appearance: none;
+  border: 0;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-weight: 700;
+
+  @if $small {
+    @include fontStyle(body-2);
+  } @else {
+    @include fontStyle(body-1);
+  }
+
+  &:after {
+    content: "";
+    width: 0.6666em;
+    height: 0.8em;
+    background-repeat: no-repeat;
+    display: inline-flex;
+    margin-top: 0.25em;
+    margin-left: 0.818181em;
+    padding-right: 0.125em;
+
+    @if $inverted {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgOCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wLjMxNDA5NCAxMC4xNjExTDQuNDgwNTQgNS45OTQ2M0wwLjMxNDA5MyAxLjgyODE5Qy0wLjEwNDY5OCAxLjQwOTQgLTAuMTA0Njk4IDAuNzMyODg2IDAuMzE0MDkzIDAuMzE0MDk1QzAuNzMyODg1IC0wLjEwNDY5NyAxLjQwOTQgLTAuMTA0Njk3IDEuODI4MTkgMC4zMTQwOTRMNi43NTcwNCA1LjI0Mjk1QzcuMTc1ODQgNS42NjE3NCA3LjE3NTg0IDYuMzM4MjUgNi43NTcwNSA2Ljc1NzA1TDEuODI4MTkgMTEuNjg1OUMxLjQwOTQgMTIuMTA0NyAwLjczMjg4NiAxMi4xMDQ3IDAuMzE0MDk0IDExLjY4NTlDLTAuMDkzOTU5NyAxMS4yNjcxIC0wLjEwNDY5OCAxMC41Nzk5IDAuMzE0MDk0IDEwLjE2MTFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K);
+
+    } @else {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgOCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wLjMxNDA5NCAxMC4xNjExTDQuNDgwNTQgNS45OTQ2M0wwLjMxNDA5MyAxLjgyODE5Qy0wLjEwNDY5OCAxLjQwOTQgLTAuMTA0Njk4IDAuNzMyODg2IDAuMzE0MDkzIDAuMzE0MDk1QzAuNzMyODg1IC0wLjEwNDY5NyAxLjQwOTQgLTAuMTA0Njk3IDEuODI4MTkgMC4zMTQwOTRMNi43NTcwNCA1LjI0Mjk1QzcuMTc1ODQgNS42NjE3NCA3LjE3NTg0IDYuMzM4MjUgNi43NTcwNSA2Ljc1NzA1TDEuODI4MTkgMTEuNjg1OUMxLjQwOTQgMTIuMTA0NyAwLjczMjg4NiAxMi4xMDQ3IDAuMzE0MDk0IDExLjY4NTlDLTAuMDkzOTU5NyAxMS4yNjcxIC0wLjEwNDY5OCAxMC41Nzk5IDAuMzE0MDk0IDEwLjE2MTFaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K);
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+    color: var(--c-seablue);
+  }
+}
+
+@mixin tag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: rem(12);
+  font-weight: 700;
+  height: rem(27);
+  border-radius: rem(20);
+  padding: 0 rem(18);
+}
+
+@mixin tagSeaBlue {
+  @include tag;
+  color: var(--c-white);
+  background-color: var(--c-seablue);
+}
+
+.tag--sea-blue {
+  @include tagSeaBlue;
+}
+
+@mixin tagWhite {
+  @include tag;
+  color: var(--c-black);
+  background-color: var(--c-white);
+}
+
+.tag--white {
+  @include tagWhite;
+}
+
+@mixin tagLavender {
+  @include tag;
+  color: var(--c-white);
+  background-color: var(--c-lavender);
+}
+
+.tag--lavender {
+  @include tagLavender;
+}
+
+@mixin tagFakeTeal {
+  @include tag;
+  color: var(--c-white);
+  background-color: var(--c-FAKEteal);
+}
+
+.tag--fake-teal {
+  @include tagFakeTeal;
+}
+
+@mixin tagBlack {
+  @include tag;
+  color: var(--c-white);
+  background-color: var(--c-black);
+}
+
+.tag--black {
+  @include tagBlack;
+}
+
+
+@mixin button($onlyMainStyling: false, $buttonMedium: false, $buttonSmall: false) {
+  appearance: none;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 rem(24);
+  height: rem(46);
+  text-decoration: none;
+  text-align: center;
+  border-radius: rem(30);
+  font-size: rem(14);
+  font-weight: 700;
+  line-height: 1.3571;
+  background-color: var(--c-black);
+  color: var(--c-white);
+  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+
+  &:after {
+    display: none;
+  }
+
+  span {
+    transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  @if $buttonMedium {
+    height: rem(40);
+  }
+
+  @if $buttonSmall {
+    height: rem(32);
+  }
+
+  @if not $onlyMainStyling {
+    &:hover,
+    &:focus-visible {
+      text-decoration: none;
+      background-color: var(--c-grey1);
+      color: var(--c-grey3);
+
+      span {
+        transform: translateY(rem(1));
+      }
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 rem(3) var(--c-seablue);
+    }
+
+    &:disabled {
+      pointer-events: none;
+      cursor: default;
+      background-color: var(--c-grey1);
+      color: var(--c-grey2);
+
+      &:hover {
+        background-color: var(--c-grey1);
+        color: var(--c-grey2);
+
+        span {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+@mixin buttonInverted($buttonMedium: false, $buttonSmall: false) {
+  @include button;
+  color: var(--c-black);
+  background-color: var(--c-white);
+  border: rem(1) solid var(--c-white);
+  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-sizing: border-box;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--c-seablue);
+    border: rem(1) solid var(--c-seablue);
+    background-color: var(--c-white);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 rem(3) var(--c-seablue);
+  }
+
+  @if $buttonMedium {
+    height: rem(40);
+  }
+
+  @if $buttonSmall {
+    height: rem(32);
+  }
+}
+
+@mixin buttonOutlined($buttonMedium: false, $buttonSmall: false) {
+  @include button;
+  border: rem(1) solid var(--c-white);
+  background-color: transparent;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--c-lightgrey);
+    color: var(--c-lightgrey);
+    background-color: transparent;
+  }
+
+  @if $buttonMedium {
+    height: rem(40);
+  }
+
+  @if $buttonSmall {
+    height: rem(32);
+  }
+}
+
+@mixin buttonOutlinedInverted($buttonMedium: false, $buttonSmall: false) {
+  @include button;
+  border: rem(1) solid var(--c-black);
+  color: var(--c-black);
+  background-color: transparent;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--c-seablue);
+    color: var(--c-seablue);
+    background-color: transparent;
+  }
+
+  @if $buttonMedium {
+    height: rem(40);
+  }
+
+  @if $buttonSmall {
+    height: rem(32);
+  }
+}
+
+@mixin buttonCTA($buttonMedium: false, $buttonSmall: false) {
+  @include button;
+  background-color: var(--c-FAKEteal);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--c-white);
+    background-color: var(--c-darkgreen);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 rem(3) var(--c-seablue);
+  }
+
+  @if $buttonMedium {
+    height: rem(40);
+  }
+
+  @if $buttonSmall {
+    height: rem(32);
+  }
+}
+
+@mixin buttonATB($buttonMedium: false, $buttonSmall: false) {
+  @include button;
+  background-color: var(--c-seablue);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--c-darkgrey);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 rem(3) var(--c-seablue);
+  }
+
+  @if $buttonMedium {
+    height: rem(40);
+  }
+
+  @if $buttonSmall {
+    height: rem(32);
+  }
+}

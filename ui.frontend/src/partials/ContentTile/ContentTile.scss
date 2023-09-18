@@ -1,0 +1,133 @@
+@import '@assets/scss/base';
+
+.content-tile {
+    $module: '.content-tile';
+    
+    display: grid;
+    grid-template-areas: "content image";
+    grid-template-columns: 55% 45%;
+    min-height: rem(200);
+    
+    @include mq($from: vp3) {
+        display: grid;
+        min-height: 0;
+        grid-template-columns: 60% 40%;
+    }
+    @include mq($from: vp5) {
+
+        display: flex;
+        flex-direction: column;
+        
+        grid-template-areas: 
+            "image"
+            "content"; 
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
+
+        border-radius: rem(20);
+        background-color: var(--c-white);
+        padding: 0;
+        border: 0;
+    }
+
+    &__image {
+        grid-area: image;
+        border-radius: 0 rem(20) rem(20) 0;
+        overflow: hidden;
+
+        flex-shrink: 0;
+        
+        @include mq($from: vp5) {
+            border-radius: rem(20) rem(20) 0 0;
+            overflow: hidden;
+        }
+        
+        img {
+            display: block;
+            height: 100%;
+            width: 100%;
+            
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    
+    &__content {
+        grid-area: content;
+
+        flex: 100%;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+                
+        border-radius: rem(20) 0 0 rem(20);
+        padding: rem(20);
+        background-color: var(--c-lightgrey);
+
+        @include mq($from: vp3) {
+            padding: rem(35);
+        }
+        @include mq($from: vp5) {
+            background-color: var(--c-white);        
+            border-radius: 0 0 rem(20) rem(20);
+        }
+    }
+    &__headline {
+        @include fontStyle(display-6);
+    }
+    &__description {
+        @include fontStyle(body-1);
+
+        margin-bottom: auto;
+
+        margin-top: rem(2);
+        @include mq($from: vp5) {
+            margin-top: rem(10);
+        }
+    }
+    &__buttons {
+        margin-top: rem(20);
+
+        .button {
+            @include link(true);
+            @include mq($from: vp5) {
+                @include buttonOutlinedInverted;
+            }
+        }
+    }
+    &__usps {
+        margin-top: rem(20);
+        
+        @include mq($from: vp5) {
+            margin-top: rem(36);
+        }
+
+        li {
+            margin-bottom: rem(2);
+            @include fontStyle(body-1);
+            display: flex;
+            align-items: flex-start;
+
+            & + li {
+                margin-top: rem(8);
+            }
+
+            svg {
+                width: 1em;
+                flex: 0 0 1em;
+                display: block;
+                margin-right: rem(10);
+                align-self: center;
+
+                @include mq($from: vp5) {
+                    margin-right: rem(30);
+                }
+            }
+
+            span {
+                display: block;
+            }
+        }
+    }
+}

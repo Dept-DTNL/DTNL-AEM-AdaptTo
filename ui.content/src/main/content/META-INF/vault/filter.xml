@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/dtnl-aem-adaptto" mode="update"/>
+    <filter root="/content/dtnl-aem-adaptto" mode="merge"/>
+    <filter root="/content/dam/dtnl-aem-adaptto/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/dtnl-aem-adaptto" mode="merge"/>
+</workspaceFilter>

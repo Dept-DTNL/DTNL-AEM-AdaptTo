@@ -1,0 +1,230 @@
+
+$default-lineheight: 1.4;
+
+// Example
+// style-name: (
+//   ff: $header-font,      // font-family
+//   fw: $weight-bold,      // font-weight
+//   size: 20,              // font-size
+//   lh: 24,                // line-height
+//   ls: 1,                 // letter-spacing
+//   tt: none,              // text-transform
+//   fs: italic,            // font-style
+//   medium: (
+//     size: 18,
+//     lh: 22
+//   ),
+//   small: (
+//     size: 16,
+//     lh: 20
+//   )
+// )
+// usage: @extend %t-[style-name];
+// usage: @include t-[style-name]
+
+// NB!!! Line height is annotated in pixels, and calculated against the font-size to make a unitless value.
+// Eg. size: 28, lh: 28 =  28/28 = 1 line-height
+//
+
+$typography-vars: (
+  display-1: (
+    ff: $font-secondary,
+    sz: 44,
+    lh: 53,
+    fw: 700,
+    breakpoints: (
+      vp5: (
+        sz: 80,
+        lh: 96,
+      ),
+    ),
+  ),
+  display-2: (
+    ff: $font-secondary,
+    sz: 36,
+    lh: 44,
+    fw: 700,
+    breakpoints: (
+      vp5: (
+        sz: 60,
+        lh: 72,
+      ),
+    ),
+  ),
+  display-3: (
+    ff: $font-secondary,
+    sz: 30,
+    lh: 40,
+    tt: none,
+    fw: 700,
+    breakpoints: (
+      vp5: (
+        sz: 48,
+        lh: 58,
+      ),
+    ),
+  ),
+  display-4: (
+    ff: $font-secondary,
+    sz: 26,
+    lh: 35,
+    tt: none,
+    fw: 700,
+    breakpoints: (
+      vp5: (
+        sz: 38,
+        lh: 46,
+      ),
+    ),
+  ),
+  display-5: (
+    ff: $font-secondary,
+    sz: 22,
+    lh: 30,
+    tt: none,
+    fw: 700,
+    breakpoints: (
+      vp5: (
+        sz: 32,
+        lh: 39
+      ),
+    ),
+  ),
+  display-6: (
+    ff: $font-secondary,
+    sz: 18,
+    lh: 22,
+    tt: none,
+    fw: 700,
+    breakpoints: (
+      vp5: (
+        sz: 24,
+        lh: 32,
+      ),
+    ),
+  ),
+  display-7: (
+    ff: $font-secondary,
+    sz: 16,
+    lh: 19,
+    tt: none,
+    fw: 700,
+    breakpoints: (
+      vp5: (
+        sz: 22,
+        lh: 29,
+      ),
+    ),
+  ),
+  display-8: (
+    ff: $font-secondary,
+    sz: 16,
+    lh: 19,
+    tt: none,
+    fw: 700,
+    breakpoints: (
+      vp5: (
+        sz: 18,
+        lh: 24,
+      ),
+    ),
+  ),
+  title-1: (
+    ff: $font-primary,
+    sz: 22,
+    lh: 30,
+    fw: 400,
+    breakpoints: (
+      vp5: (
+        sz: 28,
+        lh: 38,
+      ),
+    ),
+  ),
+  title-2: (
+    ff: $font-primary,
+    sz: 20,
+    lh: 27,
+    fw: 400,
+    breakpoints: (
+      vp5: (
+        sz: 24,
+        lh: 32,
+      ),
+    ),
+  ),
+  title-3: (
+    ff: $font-primary,
+    sz: 18,
+    lh: 24,
+    fw: 400,
+    breakpoints: (
+      vp5: (
+        sz: 18,
+        lh: 29,
+      ),
+    ),
+  ),
+  title-4: (
+    ff: $font-primary,
+    sz: 16,
+    lh: 21,
+    fw: 400,
+    breakpoints: (
+      vp5: (
+        sz: 16,
+        lh: 21,
+      ),
+    ),
+  ),
+  body-1: (
+    ff: $font-primary,
+    sz: 16,
+    lh: 19,
+    fw: 400,
+    breakpoints: (
+      vp5: (
+        sz: 18,
+        lh: 24,
+      ),
+    ),
+  ),
+  body-2: (
+    ff: $font-primary,
+    sz: 14,
+    lh: 20,
+    fw: 400,
+    breakpoints: (
+      vp5: (
+        sz: 14,
+        lh: 19,
+      ),
+    ),
+  ),
+  body-3: (
+    ff: $font-primary,
+    sz: 12,
+    lh: 16,
+    fw: 400,
+    breakpoints: (
+      vp5: (
+        sz: 12,
+        lh: 16,
+      ),
+    ),
+  ),
+  meta: (
+    ff: $font-primary,
+    sz: 12,
+    lh: 22,
+    ls: 1,
+    fw: 700,
+    tt: uppercase,
+    breakpoints: (
+      vp5: (
+        sz: 14,
+        lh: 26,
+      ),
+    ),
+  ),
+);

@@ -1,0 +1,27 @@
+.efficiency-aplus3 {
+    @include energyEfficiencyLabel(1);
+}
+.efficiency-aplus2 {
+    @include energyEfficiencyLabel(2);
+}
+.efficiency-aplus {
+    @include energyEfficiencyLabel(3);
+}
+.efficiency-a {
+    @include energyEfficiencyLabel(4);
+}
+.efficiency-b {
+    @include energyEfficiencyLabel(5);
+}
+.efficiency-c {
+    @include energyEfficiencyLabel(6);
+}
+.efficiency-d {
+    @include energyEfficiencyLabel(7);
+}
+.efficiency-e {
+    @include energyEfficiencyLabel(8);
+}
+.efficiency-f {
+    @include energyEfficiencyLabel(9);
+}

@@ -1,0 +1,36 @@
+/*
+
+These imports should only be used when there are no classes exposed.
+The main reason is that we're importing this base in every component,
+which would result in a lot of duplicate classes.
+If we want to adjust classes that are being used globally,
+please add them in the global.scss.
+
+*/
+
+// functions
+@import './functions/no-unit';
+@import './functions/rem';
+
+// settingsHeroSlider
+@import './settings/breakpoints';
+@import './settings/fonts-global';
+@import './settings/grid';
+
+@import './settings/typographies';
+@import './functions/clamped';
+@import './settings/z-index';
+
+// mixins
+@import './mixins/mq';
+@import './mixins/grid';
+@import './mixins/vertical-spacing';
+@import './mixins/offset';
+@import './mixins/container';
+@import './mixins/buttons';
+@import './mixins/input';
+@import './mixins/debug';
+@import './mixins/energy-label';
+@import './mixins/font-style';
+@import './mixins/helpers';
+@import './mixins/input';

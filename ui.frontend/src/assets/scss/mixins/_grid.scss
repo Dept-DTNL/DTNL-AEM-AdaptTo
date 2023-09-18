@@ -1,0 +1,52 @@
+@mixin grid() {
+    --grid-gap: #{rem($grid-gap-small)};
+    --grid-cells: #{$grid-columns-mobile};
+  
+    display: grid;
+    column-gap: var(--grid-gap);
+    grid-template-columns: repeat(var(--grid-cells), 1fr);    
+  
+    @each $breakpoint, $count in $grid-column-counts {
+      @include mq($from: $breakpoint) {
+        --grid-cells: #{$count};
+      }
+    }
+    @include gridGap();
+  }
+  
+  @mixin gridGap($use-margin: false, $use-padding: false) {
+    @if $use-padding {
+      padding-right: rem($grid-gap-small);
+  
+      @each $breakpoint, $size in $grid-gap-sizes {
+        @include mq($from: $breakpoint) {
+          padding-right: rem($size);
+        }
+      }
+    } @else if $use-margin {
+      margin-right: rem($grid-gap-small);
+  
+      @each $breakpoint, $size in $grid-gap-sizes {
+        @include mq($from: $breakpoint) {
+          margin-right: rem($size);
+        }
+      }
+    } @else {
+      @each $breakpoint, $size in $grid-gap-sizes {
+        @include mq($from: $breakpoint) {
+          --grid-gap: #{rem($size)};
+        }
+      }
+    }
+  }
+  
+  
+  @mixin gridGapRight() {
+    margin-right: rem($grid-gap-small);
+    @each $breakpoint, $size in $grid-gap-sizes {
+      @include mq($from: $breakpoint) {
+        margin-right: rem($size);
+      }
+    }
+  }
+  

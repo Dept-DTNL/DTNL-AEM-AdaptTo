@@ -1,0 +1,318 @@
+@import '@assets/scss/base';
+
+.hero-slider {
+  $module: '.hero-slider';
+  transition: background-color 300ms ease;
+
+  @include mq($until: vp5) {
+    height: calc(var(--hero-slider-vh, 1vh) * 100 - var(--main-nav-height) - var(--mode-switch-height));
+  }
+
+  .aem-AuthorLayer-Edit &,
+  .aem-AuthorLayer-Preview & {
+    #{$module}, #{$module}__slide {
+      min-height: rem(800) !important;
+    }
+  }
+  
+  &__slide {
+
+    &__button {
+      margin-top: rem(44);
+      @include buttonInverted($buttonMedium: true);
+    }
+
+    @include mq($from: vp5) {
+      min-height: 50vh;
+      @include verticalSpacing(true);
+      @include verticalSpacing;
+      padding-left: rem(160);
+      padding-right: rem(160);
+    }
+
+    &__trumpet {
+      color: var(--c-white);
+      @include fontStyle(meta);
+      padding: rem(24) 0;
+    }
+
+    &__headline {
+      @include fontStyle(display-3);
+      padding-top: rem(21);
+      padding-bottom: rem(8);
+
+      @include mq($from: vp4) {
+      padding-bottom: rem(16);
+      }
+    }
+
+    &__description {
+      @include fontStyle(body-1);
+      max-width: rem(550);
+      -webkit-line-clamp: 2;
+      /* autoprefixer: off */
+      -webkit-box-orient: vertical;
+      /* autoprefixer: on */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+    }
+  
+
+    &__image-overlay,
+    &__media {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 0;
+      object-fit: cover;
+    }
+
+    &__image-overlay {
+      background: linear-gradient(180deg, rgba(22, 22, 22, 0.7) 0%, rgba(22, 22, 22, 0) 100%);
+      transform: rotate(-180deg);
+    }
+
+    &__content {
+      position: relative;
+      max-width: rem(550);
+      margin-bottom: rem(64);
+
+      @include mq($until: vp5) {
+        @include container;
+      }
+
+      @include mq($from: vp4) {
+        margin-bottom: rem(100);
+      }
+      @include mq($from: vp5) {
+        margin-bottom: rem(160);
+      }
+
+      &.has-media {
+        color: var(--c-white);
+
+        #{$module}__slide__trumpet {
+          color: var(--c-white);
+        }
+      }
+    }
+  }
+
+  &.black {
+    background-color: var(--c-black);
+    color: var(--c-white);
+  }
+
+  &.lavender,
+  &.light,
+  &.darkgrey {
+    .swiper-button {
+      background-color: var(--c-black);
+    }
+  }
+
+  &.lavender,
+  &.light {
+    #{$module}__controls {
+      #{$module}__controls__pagination {
+        .swiper-pagination-bullet {
+          &-active {
+            color: var(--c-black);
+            &:before {
+              background-color: var(--c-black);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Variants
+  &.lavender {
+    background-color: var(--c-lavender);
+    #{$module}__slide {
+      #{$module}__slide__trumpet {
+        color: var(--c-white);
+      }
+      #{$module}__slide__button {
+        @include button($buttonMedium: true);
+      }
+    }
+    .tag {
+      border: rem(1) solid var(--c-white);
+      background-color: transparent;
+    }
+  }
+
+  &.light {
+    background-color: var(--c-lightgrey);
+    color: var(--c-black);
+
+    #{$module}__slide__trumpet {
+      color: var(--c-black);
+    }
+    
+    #{$module}__slide {
+      #{$module}__slide__button {
+        @include button($buttonMedium: true);
+      }
+    }
+  }
+  &.darkgrey {
+    background-color: var(--c-darkgrey);
+    color: var(--c-white);
+  }
+
+  &.light, &.lavender {
+    &:has(.has-media) {
+      #{$module}__slide__trumpet {
+        color: var(--c-white);
+      }
+
+      #{$module}__controls #{$module}__controls__pagination .swiper-pagination-bullet {
+        color: var(--c-white);
+      }
+
+      #{$module}__slide__button {
+        @include buttonInverted($buttonMedium: true);
+      }
+    }
+  }
+
+  // Controls
+  &__controls {
+    position: absolute;
+    bottom: rem(40);
+    right: rem(70);
+    left: rem(70);
+    z-index: 2;
+
+    @include mq($from: vp5) {
+      right: rem(160);
+      left: rem(160);
+    }
+
+    #{$module}__controls__pagination {
+        padding-top: rem(16);
+        display: flex;
+
+      .swiper-pagination-bullet {
+        border-radius: 0;
+        border: 0;
+
+        position: relative;
+        cursor: pointer;
+        display: inline-flex;
+        width: 100%;
+
+        white-space: nowrap;
+
+        padding: 0.8em 0 0 0;
+
+        color: var(--c-grey2);
+        background-color: transparent;
+        @include fontStyle(body-1);
+        font-weight: 700;
+        transition: 300ms ease;
+
+        &:not(:last-child) {
+            margin-right: rem(8);
+        }
+        span {
+            opacity: 0;
+            transition: 300ms ease;
+
+            @include mq($until: vp5) {
+                display: none;
+            }
+        }
+        &:before {
+            content: '';
+            height: rem(2);
+            background-color: var(--c-grey2);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 300ms ease;
+        }
+
+        .timer {
+            position: absolute;
+            top: 0;
+            left:  0;
+            z-index: 2;
+            width: 0%;
+            height: rem(3);
+            background-color: var(--c-white);
+        }
+
+        &-active {
+            background-color: transparent;
+            .timer {
+                animation-name: countingBar;
+                animation-duration: 5.5s;
+                animation-timing-function: ease-in;
+                animation-iteration-count: 1;
+                animation-direction: alternate ;
+                animation-fill-mode:forwards;
+                background-color: currentColor;
+            }
+        }
+
+        &:hover,
+        &-active {
+            color: var(--c-white);
+            span {
+                opacity: 1;
+            }
+            &:before {
+                opacity: 0.2;
+                height: rem(3);
+                background-color: var(--c-white);
+            }
+        }
+
+        @keyframes countingBar {
+            0% {width: 0;}
+            100% {width:100%;}
+        }
+      }
+    }
+  }
+
+  &__tags {
+    display: flex;
+    gap: rem(8);
+  }
+
+  .swiper-container,
+  .swiper-wrapper {
+
+    @include mq($until: vp5) {
+      height: calc(var(--hero-slider-vh, 1vh) * 100 - var(--main-nav-height) - var(--mode-switch-height));
+    }
+  }
+
+  .swiper-slide {
+    height: auto;
+    overflow: hidden;
+  }
+
+  .swiper-button {
+    @include mq($from: vp6) {
+
+      display: flex;
+      background-color: var(--c-darkgrey);
+      margin-right: 1vw;
+      margin-left: 1vw;
+    }
+  }
+}
+
+

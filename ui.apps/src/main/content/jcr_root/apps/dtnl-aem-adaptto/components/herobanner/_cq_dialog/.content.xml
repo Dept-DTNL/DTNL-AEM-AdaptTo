@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Hero banner configuration"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <generalTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <purposeSelect
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Please select the purpose of the hero banner"
+                                        name="./purpose">
+                                        <items
+                                            jcr:primaryType="nt:unstructured">
+                                            <OptionS
+                                                jcr:primaryType="nt:unstructured"
+                                                text="General"
+                                                value="general"/>
+                                            <OptionM
+                                                jcr:primaryType="nt:unstructured"
+                                                text="For Product"
+                                                value="product"/>
+                                        </items>
+                                    </purposeSelect>
+                                    <headline
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Please configure the headline"
+                                        required="true"
+                                        name="./headline"/>
+                                    <ctaFieldSet
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                        jcr:title="CTA Cconfiguration">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <ctaLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Please provide a CTA label"
+                                                name="./ctaLabel"/>
+                                            <ctaUrl
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Please provide a CTA link"
+                                                name="./ctaUrl"
+                                                rootPath="/content"/>
+                                        </items>
+                                    </ctaFieldSet>
+                                    <productFieldSet
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                        jcr:title="Product configuration">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <productCategory
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldLabel="Please provide the category of the product"
+                                                valueType= "string"
+                                                name="./category"/>
+                                        </items>
+                                    </productFieldSet>
+                                    <imageDesktop
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fileNameParameter="./imageDesktopName"
+                                        fileReferenceParameter="./imageDesktopReference"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                        multiple="{Boolean}false"
+                                        name="./imageDesktop"
+                                        fieldLabel="Please provide the hero banner image for desktop"
+                                        uploadUrl="${suffix.path}"
+                                        required="true"
+                                        useHTML5="{Boolean}true"/>
+                                    <imageMobile
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fileNameParameter="./imageMobileName"
+                                        fileReferenceParameter="./imageMobileReference"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                        multiple="{Boolean}false"
+                                        name="./imageMobile"
+                                        fieldLabel="Please provide the hero banner image for mobile"
+                                        uploadUrl="${suffix.path}"
+                                        required="true"
+                                        useHTML5="{Boolean}true"/>
+                                    <decreaseFontSizeCheckbox
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            text="Decrease the Font size"
+                                            name="./decreaseFontSize"
+                                            checked="{Boolean}false"
+                                            uncheckedValue="{Boolean}false"
+                                            value="{Boolean}true"/>
+                                    <placeHeadlineInTopCheckbox
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            text="Please the Headline in the top"
+                                            name="./placeHeadlineInTop"
+                                            checked="{Boolean}false"
+                                            uncheckedValue="{Boolean}false"
+                                            value="{Boolean}true"/>
+                                    <id
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Please provide an ID for the component (this ID is used when you want to move the scroll of the page to this component)"
+                                        name="./id"/>
+                                </items>
+                            </column>
+                        </items>
+                    </generalTab>
+                    <targetSwitchTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Target Switch"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <targetCheckbox
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                        text="Please select checkbox and fill in all the fields if you want to show target switch banner"
+                                        name="./targetCheckbox"
+                                        value="true"/>
+                                    <headline
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Please provide the headline"
+                                        name="./targetHeadline"/>
+                                    <ctaFieldSet
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                        jcr:title="CTA Configuration">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <ctaLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Please provide a CTA label"
+                                                name="./targetCtaLabel"/>
+                                            <ctaUrl
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Please provide a CTA link"
+                                                name="./targetCtaUrl"
+                                                rootPath="/content"/>
+                                        </items>
+                                    </ctaFieldSet>
+                                </items>
+                            </column>
+                        </items>
+                    </targetSwitchTab>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
+

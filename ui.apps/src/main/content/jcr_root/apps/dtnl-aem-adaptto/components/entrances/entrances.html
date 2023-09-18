@@ -1,0 +1,14 @@
+<div>
+  <h3>Component Entrances component</h3>
+
+  <sly data-sly-use.model="com.deptagency.dtnl.aem.adaptto.core.models.EntrancesModel"/>
+
+  <ul>
+    <li>Text: ${model.text}</li>
+    <li>Long Text: ${model.longText}</li>
+    <li>Checkbox: ${model.checkbox ? "Checked!" : "Not Checked!"} </li>
+    <li>Url: ${model.url}</li>
+    <li>Select: ${model.select}</li>
+    <li>Image: <img src="${model.fileReference}" alt=""></li>
+  </ul>
+</div>

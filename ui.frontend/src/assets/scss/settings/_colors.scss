@@ -1,0 +1,41 @@
+$colors: (
+    "black": black,
+    "border": rgba(0,0,0,0.15),
+    "bgdark": #161616,
+    "darkgrey": #313131,
+    "lightgrey": #F7F7F7,
+    "white": white,
+    "grey1": #555555,
+    "grey2": #AAAAAA,
+    "grey3": #DDDDDD,
+    "grey4": #EAEAEA,
+    "grey5": #F5F5F5,
+    "adapttoblue": #2138E3,
+    "skyblue": #0077C8,
+    "seablue": #00B3E3,
+    "teal": #00C3B2,
+    "FAKEteal": #00C382,
+    "darkgreen": #009F6A,
+    "lavender": #8093DC,
+    "clover": #97D653,
+    "saffron": #FFB546,
+    "coral": #FF4337,
+    "formerror": #d32f2f,
+
+    "energy1": #009036,
+    "energy2": #58ab27,
+    "energy3": #b1c800,
+    "energy4": #ffec00,
+    "energy5": #fecc00,
+    "energy6": #f29400,
+    "energy7": #e2001a,
+    "energy8": #b50317,
+    "energy9": #a30215,
+    "energy10": #49010A,
+);
+
+@each $color, $value in $colors {
+    .color-#{$color} {
+        color: var(--#{$value});
+    }
+}
